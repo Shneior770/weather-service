@@ -1,0 +1,40 @@
+
+@import services.DoubleFormatter
+@import services.StringFormatter
+@(cityName : String , weatherList : List[CityWeatherVO] , doubleFormatter : DoubleFormatter , stringFormatter : StringFormatter)
+
+<html>
+<head>
+    <style>
+    h1 {
+     text-align:center;
+    }
+.column {
+    text-align:center;
+    float: left;
+    width: 15%;
+    padding: 5px;
+}
+
+ img{
+ width:30px;height:30px;
+ }
+
+    </style>
+</head>
+<body >
+<h1>The Forecast for the next 6 days in @stringFormatter.getCapitalizedName(cityName) is :</h1><hr>
+    @for(weather <- weatherList){
+    <div class="column">
+          <ul style="list-style-type:none">
+            <li><b>@weather.getApplicableDate</b></li>
+             <li><img src=@weather.getFormattedImg()></li></br>
+             <li><b>Weather state</b><li>
+             <li>@weather.getWeatherStateName()</li></br>
+             <li><b>Temperature</b></li>
+             <li>@doubleFormatter.formatDoubleWithTwoDigitsAfterPoint(weather.getTemperature())</li>
+          </ul>
+    </div>
+    }
+</body>
+</html>

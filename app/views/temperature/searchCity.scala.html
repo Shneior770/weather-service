@@ -1,0 +1,16 @@
+
+
+<head>
+    <title>search for a city</title>
+</head>
+<body style="text-align:center">
+<h1>Search Weather</h1>
+<form action="/temperature/cityWeatherVO" method="get">
+
+<input type="text" name="cityName" required  placeholder="City Name"
+       oninvalid="this.setCustomValidity('Please provide City Name')"
+       oninput="setCustomValidity('')">
+    <button type="submit"> Search </button>
+</form>
+
+</body>
